@@ -4,10 +4,13 @@ services:
     image: prom/prometheus:latest
     volumes:
       - ./prometheus:/etc/prometheus/
+      - prometheus_data:/data/prometheus/data
     container_name: prometheus
     hostname: prometheus
     command:
       - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.retention.time=90d
+      - --storage.tsdb.path=/data/prometheus/data
     network_mode: host
     restart: always
     environment:
@@ -49,3 +52,4 @@ services:
 volumes:
   grafana:
   grafana-provisioning:
+  prometheus_data:
