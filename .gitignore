@@ -1,2 +1,4 @@
 .idea
 .DS_Store
+grafana_data
+prometheus_data
