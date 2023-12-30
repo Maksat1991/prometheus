@@ -7,5 +7,3 @@ scrape_configs:
       password: "kwaaka01012024"
     static_configs:
       - targets: ['localhost:9091']
-        labels:
-          pushgateway_instance: metricfire
