@@ -6,4 +6,4 @@ scrape_configs:
       username: "kwaaka"
       password: "kwaaka01012024"
     static_configs:
-      - targets: ['localhost:9091']
+      - targets: ['pushgateway:9091']

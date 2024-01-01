@@ -5,7 +5,9 @@ services:
     image: prom/pushgateway:latest
     container_name: pushgateway
     restart: always
-    network_mode: host
+    ports:
+      - "9091:9091"
+#    network_mode: host
     volumes:
       - ./pushgateway:/etc/pushgateway/
     command:
@@ -24,7 +26,9 @@ services:
       - --config.file=/etc/prometheus/${PROMETHEUS_CONFIG_FILENAME}
       - --storage.tsdb.retention.time=90d
       - --storage.tsdb.path=/data/prometheus/data
-    network_mode: host
+    ports:
+      - "9090:9090"
+#    network_mode: host
     restart: always
     environment:
       TZ: "Asia/Almaty"
@@ -34,7 +38,9 @@ services:
     user: root
     depends_on:
       - prometheus
-    network_mode: host
+    ports:
+      - "3000:3000"
+#    network_mode: host
     volumes:
       - ./grafana_data/grafana:/var/lib/grafana
       - ./grafana_data/grafana-provisioning:/etc/grafana/provisioning/
