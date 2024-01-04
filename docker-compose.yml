@@ -32,6 +32,10 @@ services:
     restart: always
     environment:
       TZ: "Asia/Almaty"
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
 
   grafana:
     image: grafana/grafana
